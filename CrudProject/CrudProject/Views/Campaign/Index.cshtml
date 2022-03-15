@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "List of campaigns";
+}
+
+<h2>Campaign CRUD</h2>
+<table id="campaignTable" class="display">
+    <thead>
+        <tr>
+            <th>Campaign_name</th>
+            <th>Keywords</th>
+            <th>Bid_amount</th>
+            <th>Campaign_fund</th>
+            <th>Status</th>
+            <th>Town</th>
+            <th>Radius</th>
+        </tr>
+    </thead>
+</table>
+<link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#campaignTable").DataTable({
+                "ajax": {
+                    "url": "/Campaign/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Campaign_name" },
+                    { "data": "Keywords" },
+                    { "data": "Bid_amount" },
+                    { "data": "Campaign_fund" },
+                    { "data": "Status" },
+                    { "data": "Town" },
+                    { "data": "Radius" }
+                ]
+
+
+            });
+        });
+    </script>
+    }
